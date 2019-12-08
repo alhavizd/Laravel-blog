@@ -21,3 +21,4 @@ Route::get('/posts/add', function () {
 });
 Route::post('/posts', 'PostController@store');
 Route::put('/posts/{id}', 'PostController@update');
+Route::delete('/posts/{id}', 'PostController@delete');

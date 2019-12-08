@@ -29,7 +29,11 @@
             <td>
               <a href="#" class="btn btn-sm btn-primary">View</a>
               <a href="{{ url('posts/edit/'. $posts->id)}}" class="btn btn-sm btn-warning">Edit</a>
-              <a href="#" class="btn btn-sm btn-danger">Delete</a>
+              <form action="{{ url('posts/'.$posts->id)}}" method="post">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+              </form>
             </td>
           </tr>
         @endforeach
