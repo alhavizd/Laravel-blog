@@ -32,4 +32,28 @@ class PostController extends Controller
 
       return redirect('posts');
     }
+
+    public function edit($id) {
+      $post = Post::find($id);
+      return view('post.edit', ['post' => $post]);
+    }
+
+    public function update(Request $request, $id) {
+      if ($request->status == 'on') {
+        $request->status = 1;
+      } else {
+        $request->status = 0;
+      }
+
+      $slug = Str::slug($request->title);
+
+      $post = DB::table('posts')->where('id', $id)->update([
+                'title' => $request->title,
+                'content' => $request->content,
+                'status' => $request->status,
+                'slug' => $slug
+              ]);
+
+      return redirect('posts');
+    }
 }

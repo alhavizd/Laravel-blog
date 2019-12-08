@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/posts', 'PostController@index');
+Route::get('/posts/edit/{id}', 'PostController@edit');
 Route::get('/posts/add', function () {
     return view('post.addnew');
 });
 Route::post('/posts', 'PostController@store');
+Route::put('/posts/{id}', 'PostController@update');
